@@ -15,6 +15,12 @@ a1a2a3
 b1b2b3
 c1c2c3
 
+
+computers (brain)
+go in the middle
+choose random corner
+connect
+
 """
 a1,a2,a3,b1,b2,b3,c1,c2,c3 = "=","=","=","=","=","=","=","=","="
 def printboard():
@@ -97,6 +103,7 @@ while gameisntover():
     print(f" It's {whos_turn_is_it}'s turn now!")
     print(printboard)
     user_move = input('Choose your move')
+    #need to update the board
 
 
 
