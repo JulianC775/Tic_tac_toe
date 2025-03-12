@@ -21,9 +21,11 @@ def printboard():
     print((a1),(a2),(a3))
     print((b1),(b2),(b3))
     print((c1),(c2),(c3))
-player1 = "X"
-player2 = "O"
+player_symbol = "X"
+computer_symbol = "O"
 whos_turn_is_it = "X"
+
+
 
 def gameisntover():
     #horizonal
@@ -47,7 +49,47 @@ def gameisntover():
         return False
     return True
 
-def update_position():
+#update player move to board
+#todo: make it the computer's turn after you choose your move then your turn again
+def update_player_position(position, player_symbol):
+    global a1, a2, a3, b1, b2, b3, c1, c2, c3
+    if position == "a1" and a1 == "=":
+        a1 = player_symbol
+        return True
+    elif position == "a2" and a2 == "=":
+        a2 = player_symbol
+        return True
+    elif position == "a3" and a3 == "=":
+        a3 = player_symbol
+        return True
+    elif position == "b1" and b1 == "=":
+        b1 = player_symbol
+        return True
+    elif position == "b2" and b2 == "=":
+        b2 = player_symbol
+        return True
+    elif position == "b3" and b3 == "=":
+        b3 = player_symbol
+        return True
+    elif position == "c1" and c1 == "=":
+        c1 = player_symbol
+        return True
+    elif position == "c2" and c2 == "=":
+        c2 = player_symbol
+        return True
+    elif position == "c3" and c3 == "=":
+        c3 = player_symbol
+        return True
+    else:
+        print("Invalid Move")
+        return False
+    
+
+
+
+
+
+def update_computer_position(computer_symbol):
     global a1, a2, a3, b1, b2, b3, c1, c2, c3
 
 
