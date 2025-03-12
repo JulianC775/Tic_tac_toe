@@ -1,7 +1,4 @@
 """
-
-
-PUSSY 
 board 
 players
 turns- location
@@ -48,7 +45,7 @@ def gameisntover():
 
 
 while gameisntover():
-    print('what up bro')
+    print(whos_turn_is_it)
     print('a1a2a3')
     print('b1b2b3')
     print('c1c2c3')
