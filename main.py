@@ -3,8 +3,13 @@ board
 players
 turns- location
 
-win = 3 in row
-else tie
+to update board(will need a seperate function for computer)
+check if position is valid(do for every position :(  ))
+need global scope and to provide all possible legal moves
+if
+return false if not
+
+I want some sort of decision for computer move not random
 
 a1a2a3
 b1b2b3
@@ -42,14 +47,15 @@ def gameisntover():
         return False
     return True
 
+def update_position():
+    global a1, a2, a3, b1, b2, b3, c1, c2, c3
 
 
 while gameisntover():
-    print(whos_turn_is_it)
-    print('a1a2a3')
-    print('b1b2b3')
-    print('c1c2c3')
+    print(f" It's {whos_turn_is_it}'s turn now!")
+    print(printboard)
     user_move = input('Choose your move')
+
 
 
 
