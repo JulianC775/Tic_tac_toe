@@ -56,6 +56,8 @@ def gameisntover():
         return False
     return True
 
+
+
 #update player move to board
 #todo: make it the computer's turn after you choose your move then your turn again
 def update_player_position(position, player_symbol):
@@ -122,7 +124,9 @@ def update_computer_position(computer_symbol):
     if c1 == "=": available_positions.append("c1")
     if c2 == "=": available_positions.append("c2")
     if c3 == "=": available_positions.append("c3")
-
+    if not available_positions:
+        return False
+    #todo corners then endgamelogic(connect the corners)
 
 
 while gameisntover():
