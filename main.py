@@ -22,6 +22,7 @@ choose random corner
 connect
 
 """
+import random
 a1,a2,a3,b1,b2,b3,c1,c2,c3 = "=","=","=","=","=","=","=","=","="
 def printboard():
     print((a1),(a2),(a3))
@@ -44,7 +45,7 @@ def gameisntover():
     #vertical
     if a1 == b1 and b1 == c1 and a1 != "=":
         return False
-    if b2 == c2 and c2 == a2 and b2 != "=":
+    if b2 == c2 and b2 == c2 and a2 != "=":
         return False
     if c3 == b3 and b3 == a3 and b3 != "=":
         return False
@@ -91,12 +92,37 @@ def update_player_position(position, player_symbol):
         return False
     
 
+"""
+2 = 1 
+= X = 
+3 = 4
+
+
+
+
+"""
 
 
 
 
 def update_computer_position(computer_symbol):
     global a1, a2, a3, b1, b2, b3, c1, c2, c3
+
+    #step 1, choose the middle if available
+    if b2 == "=":
+        b2 = computer_symbol
+        return True
+    #step 2, list all possible legal moves
+    available_positions = []
+    if a1 == "=": available_positions.append("a1")
+    if a2 == "=": available_positions.append("a2")
+    if a3 == "=": available_positions.append("a3")
+    if b1 == "=": available_positions.append("b1")
+    if b3 == "=": available_positions.append("b3")
+    if c1 == "=": available_positions.append("c1")
+    if c2 == "=": available_positions.append("c2")
+    if c3 == "=": available_positions.append("c3")
+
 
 
 while gameisntover():
