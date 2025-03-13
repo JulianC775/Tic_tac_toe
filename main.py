@@ -101,9 +101,10 @@ def update_computer_position(computer_symbol):
 
 while gameisntover():
     print(f" It's {whos_turn_is_it}'s turn now!")
-    print(printboard)
+    printboard()
     user_move = input('Choose your move')
-    #need to update the board
+    update_player_position(user_move,whos_turn_is_it)
+    
 
 
 
