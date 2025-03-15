@@ -4,12 +4,12 @@ players
 turns- location
 
 to update board(will need a seperate function for computer)
-check if position is valid(do for every position :(  ))
+check if position is valid(do for every position :(  )
 need global scope and to provide all possible legal moves
 if
 return false if not
 
-I want some sort of decision for computer move not random
+if player has 2 in a row stop then stop the win
 
 a1a2a3
 b1b2b3
@@ -18,6 +18,7 @@ c1c2c3
 
 computers (brain)
 go in the middle
+second should be checking if the player has 2 in a row then stop it
 choose random corner
 connect
 
