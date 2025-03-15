@@ -164,11 +164,14 @@ while gameisntover():
             break
 
         #now it's the computers turn
-        print("Computers Turn:")
+        print("\nComputers Turn:")
         update_computer_position(computer_symbol)
 
+        # Check if game is over after computer's move
+        if not gameisntover():
+            break
 
-    print("Tile Locations")
+    print("\nTile Locations")
     print("a1,a2,a3")
     print("b1,b2,b3")
     print("c1,c2,c3")
@@ -178,6 +181,26 @@ while gameisntover():
 #print final board state
 print("Game Over!")
 printboard()
+
+# Show who won
+if a1 == a2 == a3 != "=": 
+    print(f"Winner: {a1}")
+elif b1 == b2 == b3 != "=": 
+    print(f"Winner: {b1}")
+elif c1 == c2 == c3 != "=": 
+    print(f"Winner: {c1}")
+elif a1 == b1 == c1 != "=": 
+    print(f"Winner: {a1}")
+elif a2 == b2 == c2 != "=": 
+    print(f"Winner: {a2}")
+elif a3 == b3 == c3 != "=": 
+    print(f"Winner: {a3}")
+elif a1 == b2 == c3 != "=": 
+    print(f"Winner: {a1}")
+elif a3 == b2 == c1 != "=": 
+    print(f"Winner: {a3}")
+else:
+    print("It's a draw!")
 
 
 
