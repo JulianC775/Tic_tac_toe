@@ -45,15 +45,20 @@ def gameisntover():
     #vertical
     if a1 == b1 and b1 == c1 and a1 != "=":
         return False
-    if b2 == c2 and b2 == c2 and a2 != "=":
+    if a2 == b2 and b2 == c2 and a2 != "=":
         return False
-    if c3 == b3 and b3 == a3 and b3 != "=":
+    if a3 == b3 and b3 == c3 and a3 != "=":
         return False
     #diagonal
     if a1 == b2 and b2 == c3 and a1 != "=":
         return False
     if a3 == b2 and b2 == c1 and a3 != "=":
         return False
+    
+    if "=" not in [a1, a2, a3, b1, b2, b3, c1, c2, c3]:
+        print("Board is full - it's a draw!")
+        return False
+    
     return True
 
 
@@ -94,17 +99,6 @@ def update_player_position(position, player_symbol):
         return False
     
 
-"""
-2 = 1 
-= X = 
-3 = 4
-
-
-
-
-"""
-
-
 
 #computer brain logic
 
@@ -129,7 +123,7 @@ def update_computer_position(computer_symbol):
         
     #step 3, choose a corner then correspoonding corner
     corners = ["a1","a3","c1","c3"]
-    available_corners = [pos for pos in corners if pos in corners]
+    available_corners = [pos for pos in corners if pos in available_positions]
 
     #must first check if corresponding corner is available
     if available_corners:
@@ -151,15 +145,17 @@ def update_computer_position(computer_symbol):
         elif chosen_position == "c1": c1 = computer_symbol
         elif chosen_position == "c3": c3 = computer_symbol
         return True
+    
 
 
 
 
 while gameisntover():
-
+    print("\n" + "-"*20)
+    print(f"It's {whos_turn_is_it}'s turn now!")
     printboard()
     user_move = input('Choose your move')
-    update_player_position(user_move,whos_turn_is_it)
+    
 
     valid_move = update_player_position(user_move,whos_turn_is_it)
     if valid_move:
