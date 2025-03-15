@@ -106,10 +106,10 @@ def update_player_position(position, player_symbol):
 
 
 
+#computer brain logic
 
 def update_computer_position(computer_symbol):
     global a1, a2, a3, b1, b2, b3, c1, c2, c3
-
     #step 1, choose the middle if available
     if b2 == "=":
         b2 = computer_symbol
@@ -126,20 +126,61 @@ def update_computer_position(computer_symbol):
     if c3 == "=": available_positions.append("c3")
     if not available_positions:
         return False
-    #todo corners then endgamelogic(connect the corners)
+        
+    #step 3, choose a corner then correspoonding corner
+    corners = ["a1","a3","c1","c3"]
+    available_corners = [pos for pos in corners if pos in corners]
+
+    #must first check if corresponding corner is available
+    if available_corners:
+        if "a1" in available_corners and a3 == computer_symbol:
+            chosen_position = "a1"  # Take a1 if we already have a3
+        elif "a3" in available_corners and a1 == computer_symbol:
+            chosen_position = "a3"  # Take a3 if we already have a1
+        elif "c1" in available_corners and c3 == computer_symbol:
+            chosen_position = "c1"  # Take c1 if we already have c3
+        elif "c3" in available_corners and c1 == computer_symbol:
+            chosen_position = "c3"  # Take c3 if we already have c1
+        else:
+        # If no corresponding corner pattern found, take any random available corner
+            chosen_position = random.choice(available_corners)
+        
+        #update the board with the chosen corner
+        if chosen_position == "a1": a1 = computer_symbol
+        elif chosen_position == "a3": a3 = computer_symbol
+        elif chosen_position == "c1": c1 = computer_symbol
+        elif chosen_position == "c3": c3 = computer_symbol
+        return True
+
+
 
 
 while gameisntover():
-    print(f" It's {whos_turn_is_it}'s turn now!")
+
     printboard()
     user_move = input('Choose your move')
     update_player_position(user_move,whos_turn_is_it)
-    
+
+    valid_move = update_player_position(user_move,whos_turn_is_it)
+    if valid_move:
+        #check if game is over after the player moves
+        if not gameisntover():
+            break
+
+        #now it's the computers turn
+        print("Computers Turn:")
+        update_computer_position(computer_symbol)
+
+
+    print("Tile Locations")
+    print("a1,a2,a3")
+    print("b1,b2,b3")
+    print("c1,c2,c3")
 
 
 
-
-
+#print final board state
+print("Game Over!")
 printboard()
 
 
