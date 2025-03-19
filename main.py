@@ -24,17 +24,19 @@ connect
 
 """
 import random
+#creates 9 variables and initilizes them to empty space on the board(=)
 a1,a2,a3,b1,b2,b3,c1,c2,c3 = "=","=","=","=","=","=","=","=","="
 def printboard():
     print((a1),(a2),(a3))
     print((b1),(b2),(b3))
     print((c1),(c2),(c3))
+#assigns symbols to player and computer, initilizes it as players turn(in the future I want this to be random, it's the only way it's fair)
 player_symbol = "X"
 computer_symbol = "O"
 whos_turn_is_it = "X"
 
 
-
+#function that checks if either player has 3 in a row or a draw
 def gameisntover():
     #horizonal
     if a1 == a2 and a2 == a3 and a1 != "=":
@@ -64,8 +66,8 @@ def gameisntover():
 
 
 
-#update player move to board
-#todo: make it the computer's turn after you choose your move then your turn again
+#update player move to board based off of user input
+
 def update_player_position(position, player_symbol):
     global a1, a2, a3, b1, b2, b3, c1, c2, c3
     if position == "a1" and a1 == "=":
@@ -152,6 +154,7 @@ def update_computer_position(computer_symbol):
 
 
 while gameisntover():
+    #prints a line between moves
     print("\n" + "-"*20)
     print(f"It's {whos_turn_is_it}'s turn now!")
     printboard()
@@ -171,7 +174,7 @@ while gameisntover():
         # Check if game is over after computer's move
         if not gameisntover():
             break
-
+#prints the board after a valid move, need a case for it to print on invalid move since that would be more important
     print("\nTile Locations")
     print("a1,a2,a3")
     print("b1,b2,b3")
